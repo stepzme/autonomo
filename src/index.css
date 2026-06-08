@@ -468,63 +468,18 @@ main {
 }
 
 .audience-icon {
-  position: relative;
   display: block;
   width: 32px;
   height: 32px;
   flex: 0 0 auto;
-  overflow: hidden;
 }
 
-.audience-icon-layer {
-  position: absolute;
-  display: block;
-}
-
-.audience-icon-layer img {
+.audience-icon img {
   display: block;
   width: 100%;
   height: 100%;
   max-width: none;
-  object-fit: fill;
-}
-
-.audience-layer-fill {
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.audience-layer-cam-part {
-  inset: 9.37% 21.87% 9.38% 1.04%;
-}
-
-.audience-layer-cam-vector {
-  inset: 25% 1.04% 27.77% 50%;
-}
-
-.audience-layer-cart-part {
-  inset: 0.78% 28% 41.41% 0.78%;
-}
-
-.audience-layer-cart-vector {
-  inset: 71.88% 17.71% 5.21% 26.04%;
-}
-
-.audience-layer-heart-part {
-  inset: 9.38% 5.21% 9.01%;
-}
-
-.audience-layer-heart-vector {
-  inset: 45.83% 20.87% 9.01%;
-}
-
-.audience-layer-book-part {
-  inset: 5.17% 50% 21.28% 5.21%;
-}
-
-.audience-layer-book-vector {
-  inset: 3.88% 28.91% 28.91% 7.03%;
+  object-fit: contain;
 }
 
 .audience-card h3,

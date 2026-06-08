@@ -10,24 +10,12 @@ const uiIcons = {
   plus: iconAsset("plus.svg"),
 } as const;
 
-const audienceIconLayers = {
-  rocket: [{ src: iconAsset("audience-rocket.svg"), className: "audience-layer-fill" }],
-  cam: [
-    { src: iconAsset("audience-cam-part.svg"), className: "audience-layer-cam-part" },
-    { src: iconAsset("audience-cam-vector.svg"), className: "audience-layer-cam-vector" },
-  ],
-  cart: [
-    { src: iconAsset("audience-cart-part.svg"), className: "audience-layer-cart-part" },
-    { src: iconAsset("audience-cart-vector.svg"), className: "audience-layer-cart-vector" },
-  ],
-  heart: [
-    { src: iconAsset("audience-heart-part.svg"), className: "audience-layer-heart-part" },
-    { src: iconAsset("audience-heart-vector.svg"), className: "audience-layer-heart-vector" },
-  ],
-  book: [
-    { src: iconAsset("audience-book-part.svg"), className: "audience-layer-book-part" },
-    { src: iconAsset("audience-book-vector.svg"), className: "audience-layer-book-vector" },
-  ],
+const audienceIcons = {
+  rocket: iconAsset("audience-rocket.svg"),
+  cam: iconAsset("audience-cam.svg"),
+  cart: iconAsset("audience-cart.svg"),
+  heart: iconAsset("audience-heart.svg"),
+  book: iconAsset("audience-book.svg"),
 } as const;
 
 type AppIconConfig = {
@@ -142,7 +130,7 @@ const appIcons = {
   },
 } satisfies Record<string, AppIconConfig>;
 
-type AudienceIconName = keyof typeof audienceIconLayers;
+type AudienceIconName = keyof typeof audienceIcons;
 type AppIconName = keyof typeof appIcons;
 type ChainToken = AppIconName | "+" | "/";
 
@@ -408,11 +396,7 @@ function ChevronDownIcon() {
 function AudienceIcon({ name }: { name: AudienceIconName }) {
   return (
     <span className={`audience-icon audience-icon-${name}`} aria-hidden="true">
-      {audienceIconLayers[name].map((layer) => (
-        <span className={`audience-icon-layer ${layer.className}`} key={layer.src}>
-          <img src={layer.src} alt="" />
-        </span>
-      ))}
+      <img src={audienceIcons[name]} alt="" />
     </span>
   );
 }
