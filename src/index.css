@@ -196,7 +196,7 @@ main {
 .text-button {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   border: 0;
   padding: 0;
   background: transparent;
@@ -208,8 +208,14 @@ main {
 }
 
 .text-button-icon {
-  width: 24px;
-  height: 24px;
+  width: 12px;
+  height: 8px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
   transition: transform 180ms ease;
 }
 
@@ -290,8 +296,8 @@ main {
   align-items: center;
   justify-content: center;
   gap: 40px;
-  padding-top: clamp(40px, 5.2vw, 92px);
-  padding-bottom: clamp(56px, 7vw, 120px);
+  padding-top: clamp(24px, 4vh, 60px);
+  padding-bottom: clamp(20px, 3vh, 48px);
   text-align: center;
 }
 
@@ -429,7 +435,8 @@ main {
 }
 
 .best-fits {
-  padding: 30px 0;
+  flex: 0 0 auto;
+  padding: 0;
 }
 
 .audience-grid {
@@ -1140,7 +1147,7 @@ main {
   position: relative;
   z-index: 1;
   gap: 24px;
-  width: min(calc(100% - var(--page-x) * 2), 682px);
+  width: min(calc(100% - var(--page-x) * 2), 900px);
   margin-inline: auto;
   padding-top: clamp(92px, 8.75vw, 140px);
   text-align: center;
@@ -1153,10 +1160,11 @@ main {
 
 .final-content h2 {
   margin: 0;
-  font-size: clamp(58px, 6vw, 112px);
+  font-size: clamp(58px, 6vw, 96px);
   font-weight: 500;
   line-height: 1;
   letter-spacing: -0.04em;
+  white-space: nowrap;
 }
 
 .final-content p {
@@ -1356,7 +1364,6 @@ main {
     width: 100%;
   }
 
-  .best-fits,
   .notion-section,
   .solutions-section,
   .integrations-section,
@@ -1458,6 +1465,7 @@ main {
 
   .final-content h2 {
     font-size: clamp(46px, 14vw, 64px);
+    white-space: normal;
   }
 
   .footer {

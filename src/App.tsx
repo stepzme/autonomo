@@ -7,7 +7,6 @@ const iconAsset = (name: string) => asset(`/assets/icons/${name}`);
 
 const uiIcons = {
   arrowRight: iconAsset("arrow-right.svg"),
-  chevronDown: iconAsset("chevron-down.svg"),
   plus: iconAsset("plus.svg"),
 } as const;
 
@@ -398,6 +397,14 @@ function MaskIcon({ name, className = "" }: { name: keyof typeof uiIcons; classN
   );
 }
 
+function ChevronDownIcon() {
+  return (
+    <svg className="text-button-icon" viewBox="0 0 12 8" aria-hidden="true" focusable="false">
+      <path d="M1 1.5L6 6.5L11 1.5" />
+    </svg>
+  );
+}
+
 function AudienceIcon({ name }: { name: AudienceIconName }) {
   return (
     <span className={`audience-icon audience-icon-${name}`} aria-hidden="true">
@@ -488,7 +495,7 @@ function Header() {
               onClick={() => toggleMenu(label)}
             >
               {label}
-              <MaskIcon name="chevronDown" className="text-button-icon" />
+              <ChevronDownIcon />
             </button>
             <div
               id={`${label.toLowerCase()}-menu`}
@@ -588,6 +595,7 @@ function Hero() {
           <EmailForm />
         </div>
       </div>
+      <BestFits />
     </section>
   );
 }
@@ -856,7 +864,6 @@ export default function App() {
   return (
     <main>
       <Hero />
-      <BestFits />
       <NotionEducation />
       <SolutionsGallery />
       <Integrations />
