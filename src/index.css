@@ -157,6 +157,21 @@ main {
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.05);
 }
 
+.mask-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  background: currentColor;
+  mask: var(--icon-url) center / contain no-repeat;
+  -webkit-mask: var(--icon-url) center / contain no-repeat;
+}
+
+.button-icon {
+  width: 24px;
+  height: 24px;
+}
+
 .site-header {
   position: relative;
   z-index: 20;
@@ -192,11 +207,13 @@ main {
   letter-spacing: -0.03em;
 }
 
-.text-button svg {
+.text-button-icon {
+  width: 24px;
+  height: 24px;
   transition: transform 180ms ease;
 }
 
-.text-button[aria-expanded="true"] svg {
+.text-button[aria-expanded="true"] .text-button-icon {
   transform: rotate(180deg);
 }
 
@@ -438,9 +455,63 @@ main {
 }
 
 .audience-icon {
+  position: relative;
+  display: block;
   width: 32px;
   height: 32px;
-  color: var(--violet);
+  flex: 0 0 auto;
+  overflow: hidden;
+}
+
+.audience-icon-layer {
+  position: absolute;
+  display: block;
+}
+
+.audience-icon-layer img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: fill;
+}
+
+.audience-layer-fill {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.audience-layer-cam-part {
+  inset: 9.37% 21.87% 9.38% 1.04%;
+}
+
+.audience-layer-cam-vector {
+  inset: 25% 1.04% 27.77% 50%;
+}
+
+.audience-layer-cart-part {
+  inset: 0.78% 28% 41.41% 0.78%;
+}
+
+.audience-layer-cart-vector {
+  inset: 71.88% 17.71% 5.21% 26.04%;
+}
+
+.audience-layer-heart-part {
+  inset: 9.38% 5.21% 9.01%;
+}
+
+.audience-layer-heart-vector {
+  inset: 45.83% 20.87% 9.01%;
+}
+
+.audience-layer-book-part {
+  inset: 5.17% 50% 21.28% 5.21%;
+}
+
+.audience-layer-book-vector {
+  inset: 3.88% 28.91% 28.91% 7.03%;
 }
 
 .audience-card h3,
@@ -519,34 +590,109 @@ main {
   font-size: 16px;
 }
 
-.app-icon,
-.mini-app {
+.app-icon-tile {
+  position: relative;
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--ink);
-  font-weight: 700;
-}
-
-.app-icon {
   width: 32px;
   height: 32px;
-  border-radius: 8px;
-  font-size: 14px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 7px;
+  background: var(--surface);
 }
 
-.notion-icon {
-  border-color: var(--ink);
+.app-icon-tile.is-bordered {
+  border: 1px solid var(--border);
 }
 
-.google-icon {
-  color: #2d5bff;
+.app-icon-tile.is-full {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
-.microsoft-icon {
-  color: var(--orange);
+.app-icon-img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.app-icon-tile.is-full .app-icon-img {
+  width: 32px;
+  height: 32px;
+}
+
+.app-icon-tile.is-full .app-icon-google {
+  width: 30px;
+  height: 30px;
+}
+
+.app-icon-wide {
+  width: 24px;
+  height: auto;
+}
+
+.app-icon-medium {
+  width: 22px;
+  height: 22px;
+}
+
+.app-icon-large {
+  width: 24px;
+  height: 24px;
+}
+
+.app-icon-small {
+  width: 18px;
+  height: 18px;
+}
+
+.app-icon-woo {
+  width: 30px;
+  height: 18px;
+}
+
+.app-icon-vote-blue {
+  width: 26px;
+  height: 26px;
+}
+
+.app-icon-overlay {
+  position: absolute;
+  display: block;
+  max-width: none;
+  pointer-events: none;
+}
+
+.app-icon-calendar-mark {
+  inset: 40.98% 17.51% 18.68% 32.27%;
+  width: auto;
+  height: auto;
+}
+
+.vote-orange-stem,
+.vote-orange-corner {
+  position: absolute;
+  display: block;
+  background: var(--orange);
+}
+
+.vote-orange-stem {
+  top: 15px;
+  left: 6.42px;
+  width: 8.58px;
+  height: 20.02px;
+}
+
+.vote-orange-corner {
+  top: 6.22px;
+  left: 15px;
+  width: 16px;
+  height: 8.78px;
+  transform: rotate(180deg);
 }
 
 .product-screen-wrap {
@@ -592,18 +738,20 @@ main {
   gap: 40px;
   margin-top: 78px;
   overflow-x: auto;
-  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0;
 }
 
 .segment-tabs button {
   border: 0;
   border-bottom: 2px solid transparent;
   background: transparent;
-  padding: 0 0 10px;
+  margin-bottom: -1px;
+  padding: 0 0 12px;
   color: var(--muted);
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
-  line-height: 24px;
+  line-height: 30px;
   letter-spacing: -0.03em;
   white-space: nowrap;
   transition:
@@ -623,7 +771,7 @@ main {
   align-items: center;
   min-height: 720px;
   margin-top: 52px;
-  border-radius: 24px;
+  border-radius: 20px;
   background: var(--paper);
   padding: clamp(28px, 3.8vw, 60px);
 }
@@ -637,8 +785,9 @@ main {
 .advantage-card {
   position: relative;
   overflow: hidden;
+  min-height: 180px;
   border: 0;
-  border-radius: 20px;
+  border-radius: 12px;
   background: transparent;
   padding: 20px;
   text-align: left;
@@ -649,6 +798,7 @@ main {
 }
 
 .advantage-card.is-active {
+  min-height: 208px;
   background: var(--surface);
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.04);
 }
@@ -679,14 +829,14 @@ main {
   height: 4px;
   overflow: hidden;
   border-radius: 999px;
-  background: var(--border);
+  background: var(--paper);
 }
 
 .card-progress::after {
   display: block;
   width: 100%;
   height: 100%;
-  background: var(--violet);
+  background: var(--ink);
   content: "";
   transform-origin: left;
   animation: fill-progress 4.2s linear forwards;
@@ -700,8 +850,9 @@ main {
 
 .gallery-screen img {
   width: min(100%, 956px);
-  border-radius: 12px;
-  box-shadow: 0 30px 45px rgba(0, 0, 0, 0.08);
+  border: 20px solid var(--surface);
+  border-radius: 8px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
 }
 
 .integrations-section {
@@ -723,8 +874,13 @@ main {
 
 .integration-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
   min-height: 202px;
+  border: 1px solid var(--border);
   padding: 20px;
+  box-shadow: none;
   transition:
     transform 180ms ease,
     box-shadow 180ms ease;
@@ -735,33 +891,24 @@ main {
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
-  min-height: 38px;
+  min-height: 32px;
 }
 
 .icon-chain {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   padding-right: 42px;
 }
 
-.chain-part {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.mini-app {
-  min-width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  padding: 0 7px;
-  font-size: 11px;
+.icon-chain.is-compact {
+  padding-right: 0;
 }
 
 .chain-separator {
   color: var(--muted);
+  font-size: 20px;
+  line-height: 30px;
 }
 
 .pricing-badge,
@@ -786,22 +933,8 @@ main {
 }
 
 .pricing-badge.is-paid {
-  background: var(--orange-tint);
-  color: var(--orange);
-}
-
-.integration-icon-float {
-  position: absolute;
-  top: 55px;
-  right: 20px;
-  display: inline-flex;
-  width: 36px;
-  height: 36px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  background: var(--paper);
-  color: var(--violet);
+  background: #dfe3f3;
+  color: #2d5bff;
 }
 
 .roadmap-card {
@@ -823,7 +956,7 @@ main {
 
 .voting-section {
   padding: 80px 0;
-  border-radius: 24px;
+  border-radius: 80px;
 }
 
 .voting-heading {
@@ -917,7 +1050,6 @@ main {
 .vote-rocket {
   width: 32px;
   height: 32px;
-  color: var(--violet);
 }
 
 .vote-options h3 {
@@ -945,6 +1077,7 @@ main {
 
 .vote-bar {
   display: flex;
+  gap: 4px;
   min-height: 50px;
   overflow: hidden;
   border-radius: 10px;
@@ -956,6 +1089,7 @@ main {
   align-items: center;
   gap: 5px;
   min-width: 92px;
+  border-radius: 10px;
   padding: 12px 14px;
   color: var(--surface);
   font-size: 18px;

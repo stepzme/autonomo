@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 32 32.375" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="notion">
+<rect id="Rectangle 2" width="32" height="32" rx="7" fill="var(--fill-0, black)"/>
+<g id="Union">
+<path d="M6.0241 13.1944H4V19.5559H6.0241V13.1944Z" fill="var(--fill-0, white)"/>
+<path d="M6.89157 19.5559H8.91566V17.821H10.6506V15.7969H8.91566V15.2185H11.5181V13.1944H6.89157V19.5559Z" fill="var(--fill-0, white)"/>
+<path d="M15.5663 19.5559V15.2185H17.012V13.1944H12.0964V15.2185H13.5422V19.5559H15.5663Z" fill="var(--fill-0, white)"/>
+<path d="M21.0602 19.5559V15.2185H22.506V13.1944H17.5904V15.2185H19.0361V19.5559H21.0602Z" fill="var(--fill-0, white)"/>
+<path d="M26.5542 19.5559V15.2185H28V13.1944H23.0843V15.2185H24.5301V19.5559H26.5542Z" fill="var(--fill-0, white)"/>
+</g>
+</g>
+</svg>
