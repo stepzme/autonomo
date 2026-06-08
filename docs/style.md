@@ -29,6 +29,7 @@
   - 16px для карточек и внутрикартонного контента;
   - 24px для формы/текста;
   - 40px и 80px для крупных вертикальных блоков.
+- На экранах шире 1600px интерфейс масштабируется пропорционально через ограниченный scale/wrapper, чтобы сохранить крупность макета на wide desktop.
 
 ## 3. Colors
 
@@ -47,12 +48,11 @@
 
 ## 4. Typography
 
-Primary font in most layers: `Space Grotesk`.
+Шрифты нужно использовать строго по макету:
 
-Observed hero title mismatch: generated code references `Gilroy:Medium` in the hero H1, while other headings use `Space Grotesk:Medium`. Before implementation, choose one production rule:
-
-- preferred: use `Space Grotesk` for all headings and UI text;
-- optional: use `Gilroy` only for hero H1 if licensed and confirmed.
+- Hero H1: `Gilroy:Medium`.
+- Основные секционные заголовки, body text, nav, buttons, cards и badges: `Space Grotesk`.
+- Проект учебный, поэтому Gilroy допустим как design-match asset. Если в локальной разработке файл шрифта недоступен, fallback должен быть близким по метрикам, но это нужно считать временным отклонением от макета.
 
 Desktop type scale:
 
@@ -122,16 +122,36 @@ Voting card:
 - split two feature panels with a 1px divider;
 - bottom row with vote buttons and progress bar.
 
+Solutions advantage cards:
+
+- inactive cards use the section background/surface hierarchy from the mock;
+- active card uses white fill;
+- active card contains a horizontal progress bar at the bottom;
+- progress bar fills over the autoplay interval and resets on card/tab change.
+
+Dropdown menu:
+
+- `Solutions` and `Integrations` in header open dropdown state;
+- dropdown content is not defined yet, so implement the component shell and interaction state without inventing final navigation content.
+
+Success screen:
+
+- shown after mock e-mail submit;
+- no Figma mock exists, so design it from the existing system: white surface, 20px radius, black primary text, muted supporting text, brand violet success/accent icon, primary CTA if needed.
+
 ### Badges
 
-Free/Paid badge:
+Pricing labels:
 
-- small rounded pill/label;
-- 8px horizontal padding;
-- 2px bottom padding;
-- 8px radius;
-- green tint for `Automation`/positive statuses;
-- orange tint for `Workflow`/secondary statuses.
+- `Free` and `$ Paid` are compact labels from the mock, not real pricing logic;
+- use the Figma visual treatment for these labels;
+- keep 8px horizontal padding, 2px bottom padding and 8px radius.
+
+Feature type labels:
+
+- `Automation`: green tint `#DFF3EB` with text `#00A05C`;
+- `Workflow`: orange tint `#FFE5DF` with text `#FE6645`;
+- fix the source typo `Wokflow` to `Workflow` in implementation copy.
 
 ### Icons
 
@@ -146,6 +166,8 @@ Free/Paid badge:
 - Large Notion dashboard screenshot sits inside the Notion education section and dominates the lower part of the block.
 - Solutions screenshot sits on the right side of a large white rounded panel.
 - Decorative final CTA background uses a large bottom shape/wave asset from the design.
+- Use only Figma assets for the first implementation; do not replace product screenshots with real screenshots.
+- Favicon and webclip assets come from Figma node `5451:589`: favicon 32x32, webclip 256x256.
 
 ## 7. Section Rules
 
@@ -162,11 +184,14 @@ Define these states even if not present in the static design:
 - Buttons: default, hover, active, focus-visible, disabled, loading.
 - Inputs: default, focus, invalid, success, disabled.
 - Cards/tabs: default, hover, active/selected.
-- Voting: unvoted, selected, submitted, disabled/error.
+- Solutions gallery: autoplay active, manually selected, paused/reduced-motion.
+- Dropdowns: closed, open, focus-within, keyboard navigation.
+- Voting: visual-only default, hover, active/focus; no submitted backend state.
 
 ## 9. Responsive Guidance
 
 - Scale headings by breakpoint, not viewport width.
+- Above 1600px, use a capped proportional scale for container, spacing, large type and screenshots.
 - On mobile, stack hero form vertically and make both input/button full width.
 - Convert 5-card audience row into horizontal scroll or single-column stack.
 - Integrations grid: 4 columns desktop, 2 columns tablet, 1 column mobile.
